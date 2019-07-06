@@ -55,6 +55,9 @@
     {% if site.get('Rewrite') %}RewriteEngine on
     {{ site.Rewrite }}
     {%  endif %}
+    {% if site.get('XForwardedProto') %}
+    RequestHeader set X-Forwarded-Proto {{ site.XForwardedProto }}
+    {% endif %}
     {%   if site.get('SSLProxyEngine') %}SSLProxyEngine {{ site.SSLProxyEngine }}{% endif %}
     ProxyRequests {{ vals.ProxyRequests }}
     ProxyPreserveHost {{ vals.ProxyPreserveHost }}
